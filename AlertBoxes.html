@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1, #div2 , #div3{
+  float: left;
+  width: 150px;
+  height: 35px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  text-align: center;
+  background-color: #DBF9FC;
+}
+</style>
+<script>
+function simpleAlert() {
+  alert('I am Simple alert.');
+}
+
+function promptAlert() {
+  prompt('I am Prompt alert.');
+}
+
+function confirmationAlert() {
+  confirm('I am Confirmation alert.');
+}
+</script>
+</head>
+<body>
+
+<h2>Alert Boxes</h2>
+<p>Click on below buttons to see Different types of Alert Boxes</p>
+
+<div id="div1"><button onclick="simpleAlert();">Simple Alert</button></div>
+
+<div id="div2" ><button onclick="promptAlert();">Prompt Alert</button></div>
+
+<div id="div3" ><button onclick="confirmationAlert();">Confirmation Alert</button></div>
+
+</body>
+</html>
