@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1, #div2 , #div3{
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+#div6 , #div7 , #div8 , #div9{
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+}
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  //alert('Drag');
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  //alert('Drop');
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<table border=0>
+<tr>
+	<td><img src="https://yt3.ggpht.com/8hzEH3o2TWDO1xtCeRa_risvwlyP7PSdnMkfUI82T494nz4SZi6HOomMtixJfxADaXWJdj24XA=s176-c-k-c0x00ffffff-no-rj" width="100" height="100" border="0" alt=""></td>
+	<td><font size="100" color="">Lets Make Automation Easy</font><br>Frame Handling Automation Practice Page</td>
+</tr>
+</table>
+<table border=10 align=center>
+<tr>
+	<td rowspan=2><iframe width="560" height="315" id="pradeepYouTubeFirstFrame" name="pradeepYouTubeFirstFrame" src="https://www.youtube.com/embed/fDzoZIPzT_w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+	<td rowspan=2><iframe width="560" height="315" id="pradeepYouTubeSecondFrame" name="pradeepYouTubeSecondFrame"  src="https://www.youtube.com/embed/jZMyMHmEaxQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+</tr>
+</table>
+<table border=0 align=center>
+<tr>
+	<td><a href="https://www.youtube.com/@pradeepnailwal" target="_blank">Click Here to Visit my Channel</a></td>
+</tr>
+<tr></tr>
+<tr>
+	<td><U>You can share my youtube channel link to your friends</U><br>
+	https://www.youtube.com/@pradeepnailwal
+	</td>
+</tr>
+</table>
+</body>
+</html>
+
