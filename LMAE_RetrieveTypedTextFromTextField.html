@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+<title>
+Lets Make Automation Easy
+</title>
+<head>
+<style>
+#div1, #div2 , #div3{
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+#div6 , #div7 , #div8 , #div9{
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+}
+.reqError{
+	color: #ff0000;
+	font-weight: bold;
+}
+			
+</style>
+</style>
+<script>
+	var ide = 105;
+	function displayUser(usr) 
+	{ 
+		alert("User Id:  " + usr); 
+	};
+	function RegisterUser() 
+	{ 
+		var fName = document.getElementById("fname").value;
+		var mName = document.getElementById("mname").value;
+		var lName = document.getElementById("lname").value;
+		var age = document.getElementById("age").value;
+		var e = document.getElementById("marital");
+		var marital = e.options[e.selectedIndex].text;	
+		
+		if(fName.trim()=="" || lName.trim()==""  || age.trim()==""){
+			if(fName.trim()==""){
+				document.getElementById("reqTxtFname").innerHTML="* required.";
+			} else{
+				document.getElementById("reqTxtFname").innerHTML="";
+			}
+			if(lName.trim()==""){
+				document.getElementById("reqTxtLname").innerHTML="* required.";
+			} else{
+				document.getElementById("reqTxtLname").innerHTML="";
+			}
+			if(age.trim()==""){
+				document.getElementById("reqTxtAge").innerHTML="* required.";
+			} else{
+				document.getElementById("reqTxtAge").innerHTML="";
+			}
+			return false;
+		} 
+		alert("User Registered Sucessfully with id " + ide); 
+		ide = ide + 1;
+	};
+</script>
+</head>
+<body>
+
+<table border=0>
+<tr>
+	<td><img src="https://yt3.ggpht.com/8hzEH3o2TWDO1xtCeRa_risvwlyP7PSdnMkfUI82T494nz4SZi6HOomMtixJfxADaXWJdj24XA=s176-c-k-c0x00ffffff-no-rj" width="100" height="100" border="0" alt=""></td>
+	<td><font size="100" color="">Lets Make Automation Easy</font><br>Retrieve the typed text in Text field</td>
+</tr>
+</table>
+<table border=10 align=center>
+<tr>
+	<td>
+			<table border=0 width=420>
+	<tr><td width="200"><label>Channel Name<font color="red">*</font>:</label></td><td width="500"><input size=21 style="color: #FF0000;" value="Lets Make Automation Easy" class="schoolNameClass" readonly name="schoolName" id="schoolName" type="text"><span id="reqTxtSchoolName" class="reqError"></span></td></tr>
+
+</table>
+		</td>
+	<td rowspan=2><iframe width="560" height="315" src="https://www.youtube.com/embed/bNPKGkgnpQ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+</tr>
+</table>
+<table border=0 align=center>
+<tr>
+	<td><a href="https://www.youtube.com/@pradeepnailwal" target="_blank">Click Here to Visit my Channel</a></td>
+</tr>
+<tr></tr>
+<tr>
+	<td><U>You can share my youtube channel link to your friends</U><br>
+	https://www.youtube.com/@pradeepnailwal
+	</td>
+</tr>
+</table>
+</body>
+</html>
+
