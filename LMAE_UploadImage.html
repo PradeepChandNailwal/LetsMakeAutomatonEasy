@@ -1,5 +1,9 @@
 <!DOCTYPE HTML>
 <html>
+
+<title>
+Lets Make Automation Easy
+</title>
 <head>
 <style>
 #div1, #div2 , #div3{
@@ -20,21 +24,10 @@
 }
 </style>
 <script>
-function allowDrop(ev) {
-  ev.preventDefault();
-}
-
-function drag(ev) {
-  //alert('Drag');
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-  //alert('Drop');
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-}
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
 </script>
 </head>
 <body>
@@ -42,16 +35,17 @@ function drop(ev) {
 <table border=0>
 <tr>
 	<td><img src="https://yt3.ggpht.com/8hzEH3o2TWDO1xtCeRa_risvwlyP7PSdnMkfUI82T494nz4SZi6HOomMtixJfxADaXWJdj24XA=s176-c-k-c0x00ffffff-no-rj" width="100" height="100" border="0" alt=""></td>
-	<td><font size="100" color="">Lets Make Automation Easy</font><br>Input Box Automation Practice Page</td>
+	<td><font size="100" color="">Lets Make Automation Easy</font><br>Upload Image Automation Practice Page</td>
 </tr>
 </table>
 <table border=10 align=center>
 <tr>
-	<td>
-			<div id="div1">
-				<label><b>Enter Your Name:</b></label><br><br><input class="channelNameClass" name="channelname" id="channelid" width="800" type="text" maxlength=15></td>
-			</div>
-	<td rowspan=2><iframe id="pradeepYouTubeFrame" name="pradeepYouTubeFrame" width="560" height="315" src="https://www.youtube.com/embed/eAk79-WB2_4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+	<td align=center >
+			<img id="output" width="200" height="200"/ border=5><br>
+			<input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+			<label for="file" style="cursor: pointer;"><B>Click to Upload Image</B></label>
+		</td>
+	<td rowspan=2><iframe width="560" height="315" src="https://www.youtube.com/embed/LuccQ8ajzII" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
 </tr>
 </table>
 <table border=0 align=center>

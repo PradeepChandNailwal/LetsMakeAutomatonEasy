@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<title>
+Lets Make Automation Easy
+</title>
+<head>
+<style>
+#div1, #div2 , #div3{
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+}
+#div6 , #div7 , #div8 , #div9{
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+}
+</style><script>
+
+	function login() 
+	{ 
+		var userName = document.getElementById("userName").value;
+		var password = document.getElementById("password").value;
+		
+		if(userName.trim()=="" || password.trim()==""){
+			if(userName.trim()==""){
+				document.getElementById("reqTxtuserName").innerHTML="* User Name is required.";
+			} else{
+				document.getElementById("reqTxtuserName").innerHTML="";
+			}
+			if(password.trim()==""){
+				document.getElementById("reqTxtpassword").innerHTML="* Password is required.";
+			} else{
+				document.getElementById("reqTxtpassword").innerHTML="";
+			}
+			return false;
+		} 
+
+		if(userName == "Pradeep" && password == "Password1"){
+			window.location.href = "LMAE_WelcomeWindow.html";
+		} else if(userName == "Nishant" && password == "Password2"){
+			window.location.href = "LMAE_WelcomeWindow.html";
+		} else if(userName == "Akriti" && password == "Password3"){
+			window.location.href = "LMAE_WelcomeWindow.html";
+		} else{
+			alert("OOPS! Something Weird Happened........");
+			window.location.href = "LMAE_LoginWindow.html";
+		}
+
+	};
+</script>
+</head>
+<body>
+
+<table border=0>
+<tr>
+	<td><img src="https://yt3.ggpht.com/8hzEH3o2TWDO1xtCeRa_risvwlyP7PSdnMkfUI82T494nz4SZi6HOomMtixJfxADaXWJdj24XA=s176-c-k-c0x00ffffff-no-rj" width="100" height="100" border="0" alt=""></td>
+	<td><font size="100" color="">Lets Make Automation Easy</font><br>Input Box Automation Practice Page</td>
+</tr>
+</table>
+<table border=10 align=center>
+<tr>
+	<td>
+			<table>
+	<tr><td><label>User Name<font color="red">*</font>:</label></td><td><input class="userNameClass" name="userName" id="userName" type="text"><span id="reqTxtuserName" class="reqError"></span></td>   </tr>
+	<tr><td><label>Password<font color="red">*</font>:</label></td><td><input name="password" id="password" type="text"><span id="reqTxtpassword" class="reqError"></span></td></tr>
+	<tr>
+		<td colspan=2 align="right"><input type="button" id="login" value="Login" onclick="login();"></td>
+	</tr>
+</table>
+		</td>
+	<td rowspan=2><iframe width="560" height="315" src="https://www.youtube.com/embed/FPh3EcijoQs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+</tr>
+</table>
+<table border=0 align=center>
+<tr>
+	<td><a href="https://www.youtube.com/@pradeepnailwal" target="_blank">Click Here to Visit my Channel</a></td>
+</tr>
+<tr></tr>
+<tr>
+	<td><U>You can share my youtube channel link to your friends</U><br>
+	https://www.youtube.com/@pradeepnailwal
+	</td>
+</tr>
+</table>
+</body>
+</html>
+
