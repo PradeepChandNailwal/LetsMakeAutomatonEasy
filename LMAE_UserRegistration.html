@@ -1,0 +1,274 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+<title> User Registration Page </title>
+
+<style type="text/css">
+			.reqError{
+				color: #ff0000; /*Red Color*/
+				font-weight: bold;
+			}
+</style>
+<style>
+#dropdown-products {
+  display: none;
+}
+#menu-products:hover #dropdown-products {
+  display: block;
+}
+</style>
+<script src="jquery.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="moment-with-locales.min.js"></script>
+<script src="bootstrap-datetimepicker.min.js"></script>
+<script>
+ $(function () {
+   var bindDatePicker = function() {
+		$(".date").datetimepicker({
+        format:'YYYY-MM-DD',
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-arrow-up",
+				down: "fa fa-arrow-down"
+			}
+		}).find('input:first').on("blur",function () {
+			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+			// update the format if it's yyyy-mm-dd
+			var date = parseDate($(this).val());
+
+			if (! isValidDate(date)) {
+				//create date based on momentjs (we have that)
+				date = moment().format('YYYY-MM-DD');
+			}
+
+			$(this).val(date);
+		});
+	}
+   
+   var isValidDate = function(value, format) {
+		format = format || false;
+		// lets parse the date to the best of our knowledge
+		if (format) {
+			value = parseDate(value);
+		}
+
+		var timestamp = Date.parse(value);
+
+		return isNaN(timestamp) == false;
+   }
+   
+   var parseDate = function(value) {
+		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+		if (m)
+			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
+		return value;
+   }
+   
+   bindDatePicker();
+ });
+ </script>
+<script>
+
+	var loadFile = function(event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+
+	var ide = 103;
+	function displayUser(usr) 
+	{ 
+		alert("User Id:  " + usr); 
+	};
+	function RegisterUser() 
+	{ 
+		var fName = document.getElementById("fname").value;
+		var mName = document.getElementById("mname").value;
+		var lName = document.getElementById("lname").value;
+		var age = document.getElementById("age").value;
+		var e = document.getElementById("marital");
+		var marital = e.options[e.selectedIndex].text;
+
+		document.getElementById("reqTxtFname").innerHTML="";
+		document.getElementById("reqTxtLname").innerHTML="";
+		document.getElementById("reqTxtAge").innerHTML="";
+		
+		if(fName.trim()=="" || lName.trim()==""  || age.trim()=="" || (age>18 || age <1)){
+			if(fName.trim()==""){
+				document.getElementById("reqTxtFname").innerHTML="* Required";
+			} else{
+				document.getElementById("reqTxtFname").innerHTML="";
+			}
+			if(lName.trim()==""){
+				document.getElementById("reqTxtLname").innerHTML="* Required";
+			} else{
+				document.getElementById("reqTxtLname").innerHTML="";
+			}
+			if(age.trim()==""){
+				document.getElementById("reqTxtAge").innerHTML="* Required";
+			} else{
+				if(age>18 || age <1){
+				document.getElementById("reqTxtAge").innerHTML="*  1 - 18";
+				}else{
+					document.getElementById("reqTxtAge").innerHTML="";
+				}
+			}			
+			return false;
+		} 
+
+		
+
+		var x=document.getElementById('studentList').insertRow(1);
+		var c1=x.insertCell(0);
+		var c2=x.insertCell(1);
+		var c3=x.insertCell(2);
+		var c4=x.insertCell(3);
+		c1.innerHTML=ide;
+		c2.innerHTML=fName;
+		c3.innerHTML=age;
+		c4.innerHTML=marital;
+		alert("User Registered Sucessfully with id " + ide); 
+		ide = ide + 1;
+	};
+</script>
+</head>
+
+<body>
+<table id='studentList' border=2 align=center width=500 style="background-color:powderblue;">
+	<tr><th>Id</th><th>Name</th><th>Age</th><th>Marital Status</th></tr>
+	
+	<tr><td>102</td><td onclick="displayUser('102');">Ranbeer</td><td>20</td><td>Unmarried</td></tr>
+	<tr><td>101</td><td onclick="displayUser('101');">Pradeep</td><td>36</td><td>Married</td></tr>
+</table>
+<br>
+<table border=0 width=900 align=center>
+	<tr height=25 ><td width="200"><label>School Name<font color="red">*</font>:</label></td><td width="500"><input size=21 style="color: #FF0000;" value="Lets Make Automation Easy" class="schoolNameClass" name="schoolName" id="schoolName" type="text"><span id="reqTxtSchoolName" class="reqError"></span></td>	
+	
+		<td align=center><input type="file" accept="image/*" name="image" id="myImagefile"  onchange="loadFile(event)" ></td>
+
+		<td rowspan=7 width=250>
+			 <ul>
+    <li id="menu-products">
+      <a href="#">Courses</a>
+      <ul id="dropdown-products">
+        <li><a href="#">Seleniun</a></li>
+        <li><a href="#">JMeter</a></li>
+        <li><a href="#">Cypress</a></li>
+      </ul>
+    </li>
+  </ul>
+		</td>
+
+	</tr>
+
+<tr height=25 ><td><label>Date of Birth<font color="red">*</font>:</label></td>
+	<td >
+		<div>
+    <div >
+        <div >
+		<form >
+            <div class="form-group" style="display: flex; width: 150px; ">
+				
+                <div class='input-group date' id='datetimepicker1'>                    
+					<input type='text' class="form-control" />
+                    <span class="input-group-addon">
+					<img src="calander.png" height=20 width=20>
+					</span>
+                </div>
+            </div>
+		</form>
+        </div>
+    </div>
+</div>
+	</td>
+	<td rowspan=2><img id="output" width="100" height="100"/></td>
+	</tr>
+
+	<tr height=25><td><label>First Name<font color="red">*</font>:</label></td><td width="200"><input style="color: #FF0000;" class="fNameClass" name="fname" id="fname" type="text"><span id="reqTxtFname" class="reqError"></span></td>     <td></td></tr>
+	<tr  height=35><td><label>Middle Name:</label></td><td><input name="mname" id="mname" type="text"></td>
+	
+	<td>
+		<table>
+		<tr>
+		    <td><b><label>Age<font color="red">*</font>:</label></b></td>
+			<td><input name="age" id="age" type="number" maxlength=2 style="width: 50px;" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    ><span id="reqTxtAge" class="reqError"></span></td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+
+
+	<tr  height=25><td><label>Last Name<font color="red">*</font>:</label></td><td><input name="lname" id="lname" type="text" ><span id="reqTxtLname" class="reqError"></span></td>
+	<td>
+	<table>
+		<tr>
+		    <td><b><label >Marital Status<font color="red">*</font>:</label></b></td>
+			<td>
+				<Select name="marital" id="marital">
+		<Options>
+			<Option value="4">Unmarried</Option>
+			<Option value="2">Married</Option>
+			<Option value="3">Widow</Option>
+			<Option value="1">Divorced</Option>
+		</Options>
+		</Select>
+			</td>
+		</tr>
+	</table>	
+	</td>
+	</tr>
+
+	<tr height=35 ><td><label >Education <font color="red">*</font>:</label></td>
+	<td><Select multiple name="education" id="education">
+		<Options>
+			<Option value="4">High school</Option>
+			<Option value="2">Intermediate</Option>
+			<Option value="3">Graduate</Option>
+			<Option value="1">Post Graduate</Option>
+		</Options>
+		</Select>
+	</td>
+	<td>
+
+	<table>
+		<tr>
+		    <td><b>Comments:</b></td>
+			<td><textarea id="commentsection" name="commentsection" rows="4" cols="20">
+Please put your comments here
+</textarea></td>
+		</tr>
+	</table>	
+	</td>
+	</tr>
+
+	<tr height=35 ><td><label>Gender<font color="red">*</font>:</label></td>
+	<td>
+		<input type="radio" name="gender" id="male" value="Male" checked=true> Male
+  		<input type="radio" name="gender" id="female" value="Female"> Female
+	</td>
+	<td>
+		<table>
+		<tr>
+		    <td><b><label>Subjects<font color="red">*</font>:</label></b></td>
+			<td>
+				<input type="checkbox" checked name="selenium" id="selenium" value="Selenium">Selenium
+		<input type="checkbox" name="soapui" id="soapui"  value="SoapUI">Soap UI
+		<input type="checkbox" name="jmeter"  id="jmeter" value="JMeter">JMeter
+			</td>
+		</tr>
+	</table>
+	</td>
+	</tr>		
+
+	<tr height=20 ><td>
+	</td>
+	<td align=center><input type="button" id="Register" value="Register" onclick="RegisterUser();"></td>
+		<td align=center></td>
+	</tr>
+</table>
+</body>
+</html>

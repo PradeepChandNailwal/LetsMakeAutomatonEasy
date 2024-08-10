@@ -1,0 +1,151 @@
+<html>
+<head>
+<title> User Registration Page </title>
+
+<style type="text/css">
+			.reqError{
+				color: #ff0000; /*Red Color*/
+				font-weight: bold;
+			}
+</style>
+<script src="jquery.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="moment-with-locales.min.js"></script>
+<script src="bootstrap-datetimepicker.min.js"></script>
+<script>
+
+	var loadFile = function(event) {
+		var image = document.getElementById('output');
+		image.src = URL.createObjectURL(event.target.files[0]);
+	};
+
+	var ide = 105;
+	function displayUser(usr) 
+	{ 
+		alert("User Id:  " + usr); 
+	};
+	function RegisterUser() 
+	{ 
+		var fName = document.getElementById("fname").value;
+		var mName = document.getElementById("mname").value;
+		var lName = document.getElementById("lname").value;
+		var age = document.getElementById("age").value;
+		var e = document.getElementById("marital");
+		var marital = e.options[e.selectedIndex].text;
+
+		document.getElementById("reqTxtFname").innerHTML="";
+		document.getElementById("reqTxtLname").innerHTML="";
+		document.getElementById("reqTxtAge").innerHTML="";
+		
+		if(fName.trim()=="" || lName.trim()==""  || age.trim()=="" || (age>18 || age <1)){
+			if(fName.trim()==""){
+				document.getElementById("reqTxtFname").innerHTML="* First Name is required.";
+			} else{
+				document.getElementById("reqTxtFname").innerHTML="";
+			}
+			if(lName.trim()==""){
+				document.getElementById("reqTxtLname").innerHTML="* Last Name is required.";
+			} else{
+				document.getElementById("reqTxtLname").innerHTML="";
+			}
+			if(age.trim()==""){
+				document.getElementById("reqTxtAge").innerHTML="* Age is required.";
+			} else{
+				if(age>18 || age <1){
+				document.getElementById("reqTxtAge").innerHTML="* Age should be between 1 to 18";
+				}else{
+					document.getElementById("reqTxtAge").innerHTML="";
+				}
+			}			
+			return false;
+		} 
+
+		
+
+		var x=document.getElementById('studentList').insertRow(1);
+		var c1=x.insertCell(0);
+		var c2=x.insertCell(1);
+		var c3=x.insertCell(2);
+		var c4=x.insertCell(3);
+		c1.innerHTML=ide;
+		c2.innerHTML=fName;
+		c3.innerHTML=age;
+		c4.innerHTML=marital;
+		alert("User Registered Sucessfully with id " + ide); 
+		ide = ide + 1;
+	};
+</script>
+</head>
+
+<body>
+<table id='studentList' border=2 width=500 style="background-color:powderblue;">
+	<tr><td>Id</td><td>Name</td><td>Age</td><td>Marital Status</td></tr>
+	<tr><td>101</td><td onclick="displayUser('101');">Pradeep</td><td>36</td><td>Married</td></tr>
+	<tr><td>102</td><td onclick="displayUser('102');">Ranbeer</td><td>20</td><td>Unmarried</td></tr>
+	<tr><td>103</td><td onclick="displayUser('103');">Sumit</td><td>19</td><td>Married</td></tr>
+	<tr><td>104</td><td onclick="displayUser('104');">Gaurav</td><td>21</td><td>Married</td></tr>
+</table>
+<br>
+<table border=0 width=700>
+	<tr><td width="200"><label>School Name<font color="red">*</font>:</label></td><td width="500"><input size=21 style="color: #FF0000;" value="Lets Make Automation Easy" class="schoolNameClass" name="schoolName" id="schoolName" type="text"><span id="reqTxtSchoolName" class="reqError"></span></td></tr>
+	<tr><td><label>First Name<font color="red">*</font>:</label></td><td width="220"><input style="color: #FF0000;" class="fNameClass" name="fname" id="fname" type="text"><span id="reqTxtFname" class="reqError"></span></td>     <td rowspan=7><img id="output" width="200" height="200"/></td></tr>
+	<tr><td><label>Middle Name:</label></td><td><input name="mname" id="mname" type="text"></td></tr>
+	<tr><td><label>Last Name<font color="red">*</font>:</label></td><td><input name="lname" id="lname" type="text" ><span id="reqTxtLname" class="reqError"></span></td></tr>
+
+	<tr><td><label>Age<font color="red">*</font>:</label></td><td><input name="age" id="age" type="number" maxlength=2 style="width: 50px;" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+    ><span id="reqTxtAge" class="reqError"></span></td></tr>
+
+	<tr><td><label >Marital Status<font color="red">*</font>:</label></td>
+	<td><Select name="marital" id="marital">
+		<Options>
+			<Option value="4">Unmarried</Option>
+			<Option value="2">Married</Option>
+			<Option value="3">Widow</Option>
+			<Option value="1">Divorced</Option>
+		</Options>
+		</Select>
+	</td></tr>
+
+	<tr><td><label>Gender<font color="red">*</font>:</label></td>
+	<td>
+		<input type="radio" name="gender" id="male" value="Male" checked=true> Male
+  		<input type="radio" name="gender" id="female" value="Female"> Female
+	</td>
+	</tr>
+	
+	<tr><td><label>Subjects<font color="red">*</font>:</label></td>
+	<td>
+		<input type="checkbox" checked name="selenium" id="selenium" value="Selenium">Selenium
+		<input type="checkbox" name="soapui" id="soapui"  value="SoapUI">Soap UI
+		<input type="checkbox" name="jmeter"  id="jmeter" value="JMeter">JMeter
+		<input type="checkbox" name="cypress"  id="cypress" value="Cypress">Cypress
+	</td>
+	</tr>			
+	
+
+	<tr><td><label >Education <font color="red">*</font>:</label></td>
+	<td><Select multiple name="education" id="education">
+		<Options>
+			<Option value="4">High school</Option>
+			<Option value="2">Intermediate</Option>
+			<Option value="3">Graduate</Option>
+			<Option value="1">Post Graduate</Option>
+		</Options>
+		</Select>
+	</td>
+	<td><input type="file" accept="image/*" name="image" id="myImagefile"  onchange="loadFile(event)" ></td>
+		<td align=center></td>
+	</tr>
+	<tr><td>  </td></tr>
+	<tr><td><label >Comments <font color="red"></font>:</label></td>
+	<td><textarea id="commentsection" name="commentsection" rows="4" cols="20">
+Please put your comments here
+</textarea>
+	</td></tr>
+	<tr><td>  </td></tr>
+	<tr>
+		<td><input type="button" id="Register" value="Register" onclick="RegisterUser();"></td>
+	</tr>
+</table>
+</body>
+</html>

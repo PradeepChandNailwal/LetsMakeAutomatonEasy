@@ -1,0 +1,83 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" type="text/css" href="font-awesome.min.css">
+</head>
+<body>
+
+<label>&nbsp&nbsp&nbsp&nbsp&nbspSelect Date Of Birth:</label>
+<div class="container">
+    <div class="row">
+        <div class='col-sm-3'>
+		<form >
+            <div class="form-group" style="display: flex; width: 200px; align-items: center; margin-top: 10px; justify-content: space-between;">
+				
+                <div class='input-group date' id='datetimepicker1'>                    
+					<input type='text' class="form-control" />
+                    <span class="input-group-addon">
+					<img src="calander.png" height=20 width=20>
+					</span>
+                </div>
+            </div>
+		</form>
+        </div>
+    </div>
+</div>
+<!-- <video width="320" height="240" controls>
+  <source src="RMG_FullStackQA_June_06.mp4" type="video/mp4">
+</video> -->
+<script src="jquery.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="moment-with-locales.min.js"></script>
+<script src="bootstrap-datetimepicker.min.js"></script>
+<script>
+ $(function () {
+   var bindDatePicker = function() {
+		$(".date").datetimepicker({
+        format:'YYYY-MM-DD',
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-arrow-up",
+				down: "fa fa-arrow-down"
+			}
+		}).find('input:first').on("blur",function () {
+			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+			// update the format if it's yyyy-mm-dd
+			var date = parseDate($(this).val());
+
+			if (! isValidDate(date)) {
+				//create date based on momentjs (we have that)
+				date = moment().format('YYYY-MM-DD');
+			}
+
+			$(this).val(date);
+		});
+	}
+   
+   var isValidDate = function(value, format) {
+		format = format || false;
+		// lets parse the date to the best of our knowledge
+		if (format) {
+			value = parseDate(value);
+		}
+
+		var timestamp = Date.parse(value);
+
+		return isNaN(timestamp) == false;
+   }
+   
+   var parseDate = function(value) {
+		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+		if (m)
+			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
+		return value;
+   }
+   
+   bindDatePicker();
+ });
+ </script>
+</body>
+</html>
